@@ -5,27 +5,9 @@ var jMoment = require('moment-jalaali');
 var extendMoment = require('moment-range').extendMoment;
 
 var moment = extendMoment(Moment);
-var symbolMap = {
-  '1': '۱',
-  '2': '۲',
-  '3': '۳',
-  '4': '۴',
-  '5': '۵',
-  '6': '۶',
-  '7': '۷',
-  '8': '۸',
-  '9': '۹',
-  '0': '۰',
-};
 
 function toJMoment(date) {
   return jMoment(date ? date.clone() : undefined).locale('fa');
-}
-
-function formatNumber(num) {
-  return (num || '').replace(/\d/g, function (match) {
-    return symbolMap[match];
-  }).replace(/,/g, '،');
 }
 
 function getCalendarHeaderText(date) {
@@ -109,7 +91,6 @@ function getWeekArray(date) {
 }
 
 var utils = {
-  formatNumber: formatNumber,
   getCalendarHeaderText: getCalendarHeaderText,
   getDatePickerHeaderText: getDatePickerHeaderText,
   getDateTimePickerHeaderText: getDateTimePickerHeaderText,
